@@ -2,6 +2,8 @@ package com.lkhpractice.jpa.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -21,6 +23,7 @@ public class MemberDto {
 	
 	@Id //매핑될 DB 테이블의 기본키로 아래 속성값이 설정됨
 	@Column(name="hakbun") //실제 DB 테이블의 필드 이름
+	@GeneratedValue(strategy = GenerationType.AUTO) //기본키 생성 전략(자동으로 번호 생성 입력)
 	private Long hakbun; //학번 기본키
 	
 	@Column(name = "name", nullable = false, length = 20)
