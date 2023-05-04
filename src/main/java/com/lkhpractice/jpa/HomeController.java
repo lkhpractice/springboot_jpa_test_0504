@@ -2,13 +2,18 @@ package com.lkhpractice.jpa;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lkhpractice.jpa.dto.MemberDto;
+import com.lkhpractice.jpa.repository.MemberRepository;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	MemberRepository memberRepository;
 
 	@RequestMapping(value = "/join")
 	public String join() {
@@ -29,6 +34,8 @@ public class HomeController {
 		memberDto.setAge(age);
 		memberDto.setGrade(grade);
 		memberDto.setEtc(etc);
+		
+		memberRepository.save(memberDto);
 		
 		return "joinOk";
 	}
