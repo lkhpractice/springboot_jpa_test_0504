@@ -1,6 +1,9 @@
 package com.lkhpractice.jpa;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -52,7 +55,21 @@ public class JpaTest {
 	@DisplayName("회원 정보 수정 테스트")
 	public void modifyMember() {
 		
+		Optional<MemberDto> optionalDto = memberRepository.findById(6L);
 		
+		if(optionalDto.isPresent()) {	//null 값 여부 체크
+		
+			MemberDto memberDto = optionalDto.get();
+		
+			memberDto.setAge(32); 		//나이 수정
+			memberDto.setName("강감찬");	//이름 수정
+		
+			memberRepository.save(memberDto);
+		
+		}
+		
+		optionalDto = memberRepository.findById(6L);
+		System.out.println(optionalDto.get().toString());
 		
 	}
 	
