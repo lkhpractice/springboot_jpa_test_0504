@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 리스트</title>
+<title>회원 검색 결과</title>
 </head>
 <body>
-	<h2>전체회원 리스트</h2>
+	<h2>회원 이름 검색 결과</h2>
 	<hr>
 	<c:forEach items = "${memberDtos }" var="memberDto">
 		학번 : ${memberDto.hakbun }<br>
